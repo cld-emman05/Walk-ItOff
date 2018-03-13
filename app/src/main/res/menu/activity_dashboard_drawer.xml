@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="Manage Your Fitness">
+        <menu>
+            <item
+                android:id="@+id/nav_dashboard"
+                android:icon="@drawable/ic_menu_dashboard"
+                android:title="Dashboard" />
+            <item
+                android:id="@+id/nav_diary"
+                android:icon="@drawable/ic_menu_diary"
+                android:title="My Diary" />
+        </menu>
+    </item>
+
+    <item android:title="Manage Your Preferences">
+        <menu>
+            <item
+                android:id="@+id/nav_profile"
+                android:icon="@drawable/ic_menu_profile"
+                android:title="Profile" />
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Settings" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_action_logout"
+                android:title="Log out" />
+        </menu>
+    </item>
+
+</menu>

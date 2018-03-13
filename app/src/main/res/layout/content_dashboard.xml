@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.mobidev_wio.user.walkitoff.Dashboard"
+    tools:layout_editor_absoluteY="81dp"
+    tools:showIn="@layout/app_bar_dashboard">
+
+    <LinearLayout
+        android:id="@+id/dashboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Welcome to Walk-It-Off!"
+            android:textAlignment="center"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date today"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:layout_editor_absoluteY="81dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cal_rem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dashboard">
+
+        <TextView
+            android:id="@+id/cal_remaining_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Calories Remaining"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:layout_editor_absoluteY="81dp" />
+
+        <TextView
+            android:id="@+id/cal_remaining"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="0"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:layout_editor_absoluteY="81dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cal_burn"
+        android:layout_width="343dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cal_rem">
+
+        <TextView
+            android:id="@+id/cal_burned_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Calories Burned"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_editor_absoluteY="226dp" />
+
+        <TextView
+            android:id="@+id/cal_burned"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="0"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:layout_editor_absoluteY="81dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/step_rem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cal_burn">
+
+        <TextView
+            android:id="@+id/step_remaining_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Steps Remaining"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:layout_editor_absoluteY="347dp" />
+
+        <TextView
+            android:id="@+id/step_remaining"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="0"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:layout_editor_absoluteY="81dp" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
