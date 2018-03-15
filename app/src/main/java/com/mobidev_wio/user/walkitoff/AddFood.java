@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,25 +16,20 @@ import android.widget.TextView;
 
 
 public class AddFood extends AppCompatActivity {
-    private final static String TAG = "AddRestaurantActivity";
+    private final static String TAG = "AddFood";
 
     public final static int ADD_ACTIVITY_CODE = 1;
-    public final static int EDIT_ACTIVITY_CODE = 2;
 
     public final static int ADD_SUCCESS = 1;
-    public final static int ADD_FAILED = -1; //not really used.
 
     public final static String REQUEST_CODE_KEY = "REQUEST_CODE_KEY";
     public final static String FOOD_NAME_KEY = "FOOD_NAME_KEY";
     public final static String FOOD_DESC_KEY = "FOOD_DESC_Key";
     public final static String CALORIES_KEY = "CALORIES_KEY";
-    public final static String EDIT_MODEL_INDEX_KEY = "EDIT_MODEL_INDEX_KEY";
 
     private EditText nameText;
     private EditText descText;
     private EditText caloriesText;
-
-    private int editModelIndex = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +41,6 @@ public class AddFood extends AppCompatActivity {
         this.caloriesText = this.findViewById(R.id.calories_text);
 
         this.setupButtons();
-        this.inputEditData();
     }
 
     private void setupButtons() {
@@ -69,24 +64,12 @@ public class AddFood extends AppCompatActivity {
         });
     }
 
-    private void inputEditData() {
-        Intent intent = this.getIntent();
-        int code = intent.getIntExtra(REQUEST_CODE_KEY, 1);
-        if(code == EDIT_ACTIVITY_CODE) {
-            //load input data
-            this.nameText.setText(intent.getStringExtra(FOOD_NAME_KEY));
-            this.descText.setText(intent.getStringExtra(FOOD_DESC_KEY));
-            this.caloriesText.setText(Integer.toString(intent.getIntExtra(CALORIES_KEY, 0)));
-            this.editModelIndex = intent.getIntExtra(EDIT_MODEL_INDEX_KEY, -1);
-        }
-    }
-
     private boolean validateInput() {
         if(this.nameText.getText().toString().length() == 0) {
             //dismiss keyboard so prompt can be seen.
             InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(this.nameText.getWindowToken(), 0);
-            this.displayPrompt("Name cannot be blank.");
+            this.displayPrompt("Food cannot be blank.");
             return false;
         }
 
@@ -108,7 +91,7 @@ public class AddFood extends AppCompatActivity {
             //dismiss keyboard so prompt can be seen.
             InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(caloriesText.getWindowToken(), 0);
-            this.displayPrompt("Weight should be between 1 and 50.");
+            this.displayPrompt("Calorie must be greater than 0.");
             return false;
         }
 
@@ -123,7 +106,7 @@ public class AddFood extends AppCompatActivity {
         resultIntent.putExtra(FOOD_NAME_KEY, this.nameText.getText().toString());
         resultIntent.putExtra(FOOD_DESC_KEY, this.descText.getText().toString());
         resultIntent.putExtra(CALORIES_KEY, Integer.parseInt(this.caloriesText.getText().toString()));
-        resultIntent.putExtra(EDIT_MODEL_INDEX_KEY, this.editModelIndex);
+
         this.setResult(ADD_SUCCESS, resultIntent);
     }
 

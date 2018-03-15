@@ -44,82 +44,124 @@ public class MyDiary extends AppCompatActivity {
     private TextView dinner_cal;
     private TextView t_cons;
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_my_diary);
-            addItem();
-            setupRecyclerView();
-            setUpButtons();
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_my_diary);
+        addItem();
+        setupRecyclerView();
+        computeCalorieSum();
+        setUpButtons();
+    }
+
+    private void setupRecyclerView() {
+        this.bf_list = this.findViewById(R.id.breakfast_list);
+        this.bfAdapter = new BreakfastAdapter(this.bf_collection);
+        RecyclerView.LayoutManager recyclerLayoutManager = new LinearLayoutManager(this);
+        this.bf_list.setLayoutManager(recyclerLayoutManager);
+        this.bf_list.setItemAnimator(new DefaultItemAnimator());
+        this.bf_list.setAdapter(this.bfAdapter);
+
+        this.lunch_list = this.findViewById(R.id.lunch_list);
+        this.lAdapter = new LunchAdapter(this.lunch_collection);
+        recyclerLayoutManager = new LinearLayoutManager(this);
+        this.lunch_list.setLayoutManager(recyclerLayoutManager);
+        this.lunch_list.setItemAnimator(new DefaultItemAnimator());
+        this.lunch_list.setAdapter(this.lAdapter);
+
+        this.dinner_list = this.findViewById(R.id.dinner_list);
+        this.dAdapter = new DinnerAdapter(this.dinner_collection);
+        recyclerLayoutManager = new LinearLayoutManager(this);
+        this.dinner_list.setLayoutManager(recyclerLayoutManager);
+        this.dinner_list.setItemAnimator(new DefaultItemAnimator());
+        this.dinner_list.setAdapter(this.dAdapter);
+    }
+
+    // for demo purposes
+    private void addItem() {
+        this.bf_collection.add(new Food("Macaroni", "Pasta and cheese", 25));
+        this.bf_collection.add(new Food("Sandwich", "Ham and cheese", 40));
+        this.bf_collection.add(new Food("Tapsilog", "Tapa, sinigang at itlog", 30));
+
+        this.lunch_collection.add(new Food("Pork Sisig", "Sizzling pork with egg and mayo", 300));
+    }
+
+    private void computeCalorieSum() {
+        this.breakfast_cal = (TextView) this.findViewById(R.id.bf_cal_sum);
+        this.lunch_cal = (TextView) this.findViewById(R.id.lunch_cal_sum);
+        this.dinner_cal = (TextView) this.findViewById(R.id.dinner_cal_sum);
+
+        for (int i = 0; i < this.bf_collection.size(); i++) {
+            this.bf_cal_sum += this.bf_collection.get(i).getCalories();
+            this.breakfast_cal.setText(new Integer(this.bf_cal_sum).toString() + " cal");
         }
 
-        private void setupRecyclerView() {
-            this.bf_list = this.findViewById(R.id.breakfast_list);
-            this.bfAdapter = new BreakfastAdapter(this.bf_collection);
-            RecyclerView.LayoutManager recyclerLayoutManager = new LinearLayoutManager(this);
-            this.bf_list.setLayoutManager(recyclerLayoutManager);
-            this.bf_list.setItemAnimator(new DefaultItemAnimator());
-            this.bf_list.setAdapter(this.bfAdapter);
-
-            this.lunch_list = this.findViewById(R.id.lunch_list);
-            this.lAdapter = new LunchAdapter(this.lunch_collection);
-            recyclerLayoutManager = new LinearLayoutManager(this);
-            this.lunch_list.setLayoutManager(recyclerLayoutManager);
-            this.lunch_list.setItemAnimator(new DefaultItemAnimator());
-            this.lunch_list.setAdapter(this.lAdapter);
-
-            this.dinner_list = this.findViewById(R.id.dinner_list);
-            this.dAdapter = new DinnerAdapter(this.dinner_collection);
-            recyclerLayoutManager = new LinearLayoutManager(this);
-            this.dinner_list.setLayoutManager(recyclerLayoutManager);
-            this.dinner_list.setItemAnimator(new DefaultItemAnimator());
-            this.dinner_list.setAdapter(this.dAdapter);
+        for (int i = 0; i < this.lunch_collection.size(); i++) {
+            this.lunch_cal_sum += this.lunch_collection.get(i).getCalories();
+            this.lunch_cal.setText(new Integer(this.lunch_cal_sum).toString() + " cal");
         }
 
-        private void addItem() {
-            this.bf_collection.add(new Food("Macaroni", "Pasta and cheese", 25));
-            this.bf_collection.add(new Food("Sandwich", "Ham and cheese", 40));
-            this.bf_collection.add(new Food("Tapsilog", "Tapa, sinigang at itlog", 30));
+        for (int i = 0; i < this.dinner_collection.size(); i++) {
+            this.dinner_cal_sum += this.dinner_collection.get(i).getCalories();
+            this.dinner_cal.setText(new Integer(this.dinner_cal_sum).toString() + " cal");
+        }
 
-            this.lunch_collection.add(new Food("Pork Sisig", "Sizzling pork with egg and mayo", 300));
+        int sum = this.bf_cal_sum + this.lunch_cal_sum + this.dinner_cal_sum;
 
-            this.breakfast_cal = (TextView) this.findViewById(R.id.bf_cal_sum);
-            this.lunch_cal = (TextView) this.findViewById(R.id.lunch_cal_sum);
-            this.dinner_cal = (TextView) this.findViewById(R.id.dinner_cal_sum);
+        this.t_cons = (TextView) this.findViewById(R.id.dinner_cal_sum);
+        t_cons.setText(new Integer(sum).toString());
+    }
 
-            for(int i = 0; i < this.bf_collection.size(); i++) {
-                this.bf_cal_sum += this.bf_collection.get(i).getCalories();
-                this.breakfast_cal.setText(new Integer(this.bf_cal_sum).toString() + " cal");
+    private void setUpButtons() {
+        this.bf_btn = this.findViewById(R.id.add_bf);
+        this.lunch_btn = this.findViewById(R.id.add_lunch);
+        this.dinner_btn = this.findViewById(R.id.add_dinner);
+
+        this.bf_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent add_bf = new Intent(MyDiary.this, AddFood.class);
+                startActivityForResult(add_bf, AddFood.ADD_ACTIVITY_CODE);
             }
+        });
 
-            for(int i = 0; i < this.lunch_collection.size(); i++) {
-                this.lunch_cal_sum += this.lunch_collection.get(i).getCalories();
-                this.lunch_cal.setText(new Integer(this.lunch_cal_sum).toString() + " cal");
+        this.lunch_btn = this.findViewById(R.id.add_lunch);
+
+        this.lunch_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent add_l = new Intent(MyDiary.this, AddFood.class);
+                startActivityForResult(add_l, AddFood.ADD_ACTIVITY_CODE);
             }
+        });
+        this.dinner_btn = this.findViewById(R.id.add_dinner);
 
-            for(int i = 0; i < this.dinner_collection.size(); i++) {
-                this.dinner_cal_sum += this.dinner_collection.get(i).getCalories();
-                this.dinner_cal.setText(new Integer(this.dinner_cal_sum).toString() + " cal");
+        this.dinner_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent add_d = new Intent(MyDiary.this, AddFood.class);
+                startActivityForResult(add_d, AddFood.ADD_ACTIVITY_CODE);
             }
+        });
+    }
 
-            int sum = this.bf_cal_sum + this.lunch_cal_sum + this.dinner_cal_sum;
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-            this.t_cons = (TextView) this.findViewById(R.id.dinner_cal_sum);
-            t_cons.setText(new Integer(sum).toString());
+        if (requestCode == AddFood.ADD_ACTIVITY_CODE) {
+            if (resultCode == AddFood.ADD_SUCCESS) {
+                //for demonstration purposes, result code is used to check if adding is successful. In this scenario,
+                //there is no chance for the add activity to fail.
+                String name = data.getStringExtra(AddFood.FOOD_NAME_KEY);
+                String desc = data.getStringExtra(AddFood.FOOD_DESC_KEY);
+                int cal = data.getIntExtra(AddFood.CALORIES_KEY, 0);
+
+                Food model = new Food(name, desc, cal);
+                this.dinner_collection.add(model);
+
+                //refresh the adapter
+                this.dAdapter.notifyDataSetChanged();
+            }
         }
-
-        private void setUpButtons(){
-            this.bf_btn = this.findViewById(R.id.add_bf);
-
-            bf_btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent add_bf = new Intent(MyDiary.this, AddFood.class);
-                    startActivity(add_bf);
-                }
-            });
-
-            this.lunch_btn = this.findViewById(R.id.add_lunch);
-            this.dinner_btn = this.findViewById(R.id.add_dinner);
-        }
+    }
 }
