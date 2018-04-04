@@ -24,19 +24,23 @@ public class Food {
         this.calories = calories;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public String getDescription() {
+    public String getDescription()
+    {
         return description;
     }
 
-    public int getCalories() {
+    public int getCalories()
+    {
         return calories;
     }
 
-    public String getCaloriesString() {
+    public String getCaloriesString()
+    {
         return Integer.toString(this.calories);
     }
 }

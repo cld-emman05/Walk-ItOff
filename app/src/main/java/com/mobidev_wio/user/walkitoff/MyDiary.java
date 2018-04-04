@@ -108,8 +108,8 @@ public class MyDiary extends AppCompatActivity {
 
         int sum = this.bf_cal_sum + this.lunch_cal_sum + this.dinner_cal_sum;
 
-        this.t_cons = (TextView) this.findViewById(R.id.dinner_cal_sum);
-        t_cons.setText(new Integer(sum).toString());
+        this.t_cons = (TextView) this.findViewById(R.id.total_cal_sum);
+        t_cons.setText(new Integer(sum).toString() + " cal");
     }
 
     private void setUpButtons() {
@@ -144,23 +144,54 @@ public class MyDiary extends AppCompatActivity {
             }
         });
     }
+    private void onClick(View v)
+    {
+        if(v == bf_btn)
+        {
 
+        }
+        else if(v == lunch_btn)
+        {
+
+        }
+        else if(v == dinner_btn)
+        {
+
+        }
+    }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == AddFood.ADD_ACTIVITY_CODE) {
-            if (resultCode == AddFood.ADD_SUCCESS) {
+            if (resultCode == AddFood.ADD_SUCCESS)
+            {
                 //for demonstration purposes, result code is used to check if adding is successful. In this scenario,
                 //there is no chance for the add activity to fail.
                 String name = data.getStringExtra(AddFood.FOOD_NAME_KEY);
                 String desc = data.getStringExtra(AddFood.FOOD_DESC_KEY);
                 int cal = data.getIntExtra(AddFood.CALORIES_KEY, 0);
 
+
+
+
                 Food model = new Food(name, desc, cal);
+                //for breakfast
+                this.bf_collection.add(model);
+
+                //refresh the adapter
+                this.bfAdapter.notifyDataSetChanged();
+
+                //for lunch
+                this.lunch_collection.add(model);
+
+                //refresh the adapter
+                this.lAdapter.notifyDataSetChanged();
+                //for dinner
                 this.dinner_collection.add(model);
 
                 //refresh the adapter
                 this.dAdapter.notifyDataSetChanged();
+
             }
         }
     }
