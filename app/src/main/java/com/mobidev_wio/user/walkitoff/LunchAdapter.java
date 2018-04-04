@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class LunchAdapter extends RecyclerView.Adapter<LunchViewHolder> {
         ArrayList<Food> modelList;
 
-        public LunchAdapter(ArrayList<Food> lunch){
+public LunchAdapter(ArrayList<Food> lunch){
         this.modelList = lunch;
         }
 
