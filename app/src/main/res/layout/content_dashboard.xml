@@ -73,7 +73,7 @@
             android:layout_marginStart="8dp"
             android:text="0"
             android:textColor="#98ff98"
-            android:textSize="48sp"
+            android:textSize="36sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             tools:layout_editor_absoluteY="81dp" />
@@ -115,7 +115,7 @@
             android:layout_marginStart="8dp"
             android:text="0"
             android:textColor="#98ff98"
-            android:textSize="48sp"
+            android:textSize="36sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             tools:layout_editor_absoluteY="81dp" />
@@ -158,7 +158,7 @@
             android:layout_marginStart="8dp"
             android:text="0"
             android:textColor="#98ff98"
-            android:textSize="48sp"
+            android:textSize="36sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             tools:layout_editor_absoluteY="81dp" />

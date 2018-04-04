@@ -1,11 +1,6 @@
 package com.mobidev_wio.user.walkitoff;
 
-import android.content.Context;
 import android.content.Intent;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -19,15 +14,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
-public class Dashboard extends AppCompatActivity
-<<<<<<< HEAD
-        implements NavigationView.OnNavigationItemSelectedListener, SensorEventListener, StepListener {
+public class Dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, SensorEventListener{
 
     TextView date;
     private TextView TvSteps;
@@ -39,20 +31,17 @@ public class Dashboard extends AppCompatActivity
     private static final String TEXT_CAL_BURN = "";
     private int numSteps;
     private int calBurn;
-    Calendar cal = new GregorianCalendar(Locale.TAIWAN);
-=======
-        implements NavigationView.OnNavigationItemSelectedListener, SensorEventListener{
 
     SensorManager sensorManager;
     TextView tv_steps;
     boolean running = false;
->>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
+
+    TextView date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-<<<<<<< HEAD
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         accel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -66,39 +55,24 @@ public class Dashboard extends AppCompatActivity
         sensorManager.registerListener(Dashboard.this, accel, SensorManager.SENSOR_DELAY_FASTEST);
         /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);*/
-=======
->>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
 
-        tv_steps = (TextView) findViewById(R.id.step_remaining);
-        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);*/
-
-        FloatingActionButton addMeal = (FloatingActionButton) findViewById(R.id.add_meal);
-        addMeal.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /* Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show(); */
                 Intent add = new Intent(Dashboard.this, MyDiary.class);
                 startActivity(add);
             }
         });
 
-        FloatingActionButton about = (FloatingActionButton) findViewById(R.id.about_us);
-        about.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-<<<<<<< HEAD
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         //setUpUI();
@@ -113,37 +87,7 @@ public class Dashboard extends AppCompatActivity
     protected void onPause() {
         super.onPause();
     }
-    /*public void setUpUI(){
-        date = (TextView) this.findViewById(R.id.date);
 
-        String period;
-=======
-        /* NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this); */
-        //setUpUI();
-    }
-
->>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
-
-    protected void onResume()
-    {
-        super.onResume();
-        running = true;
-        Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-
-        if(countSensor != null)
-        {
-            sensorManager.registerListener(this, countSensor, sensorManager.SENSOR_DELAY_UI);
-        }
-        else{
-            Toast.makeText(this, "Sensor not found!", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-<<<<<<< HEAD
-        date.setText("Time to record your " + period);
-    }*/
-=======
     protected void onPause()
     {
         super.onPause();
@@ -151,8 +95,6 @@ public class Dashboard extends AppCompatActivity
         //to stop detectting steps
         //sensorManager.unregister(this);
     }
->>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
-
 
     @Override
     public void onBackPressed() {
@@ -164,14 +106,14 @@ public class Dashboard extends AppCompatActivity
         }
     }
 
-     /*@Override
-   public boolean onCreateOptionsMenu(Menu menu) {
+    /*@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.dashboard, menu);
         return true;
     }*/
 
-    /*@Override
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -184,7 +126,7 @@ public class Dashboard extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
-    }*/
+    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -213,20 +155,13 @@ public class Dashboard extends AppCompatActivity
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-<<<<<<< HEAD
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             simpleStepDetector.updateAccel(
                     event.timestamp, event.values[0], event.values[1], event.values[2]);
-=======
-        if(running)
-        {
-            tv_steps.setText(String.valueOf(event.values[0]));
->>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
         }
     }
 
     @Override
-<<<<<<< HEAD
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
@@ -241,11 +176,8 @@ public class Dashboard extends AppCompatActivity
               Calburn.setText(TEXT_CAL_BURN+ calBurn);
         }
 
-                                }
-}
-=======
+    }
     public void onAccuracyChanged(Sensor sensor, int i) {
 
     }
 }
->>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede

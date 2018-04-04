@@ -6,26 +6,39 @@
     android:layout_height="match_parent"
     android:background="@mipmap/ic_launcher_background"
     android:orientation="vertical"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
     tools:context="com.mobidev_wio.user.walkitoff.MyDiary"
     tools:layout_editor_absoluteX="16dp"
     tools:layout_editor_absoluteY="81dp">
 
+<<<<<<< HEAD
     <LinearLayout
         android:id="@+id/total_cal"
+=======
+    <RelativeLayout
+        android:id="@+id/bf_cal"
+>>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+<<<<<<< HEAD
         android:layout_marginTop="16dp"
         android:orientation="horizontal"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+=======
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+>>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:text="Total consumption"
             android:textColor="#98ff98"
             android:textSize="24sp"
@@ -60,12 +73,20 @@
             android:layout_height="wrap_content"
             android:text="Breakfast"
             android:textColor="#98ff98"
+=======
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="Total consumption"
+            android:textColor="#98ff98"
+>>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/bf_cal_sum"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:gravity="end"
             android:orientation="horizontal">
 
@@ -98,12 +119,21 @@
 
         </android.support.v7.widget.RecyclerView>
     </LinearLayout>
+=======
+            android:layout_alignParentEnd="true"
+            android:text="0 cal"
+            android:textColor="#98ff98"
+            android:textSize="18sp"
+            android:textStyle="italic" />
+    </RelativeLayout>
+>>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
 
     <LinearLayout
-        android:id="@+id/lunch"
-        android:layout_width="match_parent"
+        android:id="@+id/breakfast"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+<<<<<<< HEAD
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/breakfast"
@@ -117,30 +147,43 @@
             android:textColor="#98ff98"
             android:textSize="24sp"
             android:textStyle="bold" />
+=======
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bf_cal">
+>>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
 
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/breakfast_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="end"
-            android:orientation="horizontal">
+            android:layout_marginTop="8dp"
+            tools:layout_editor_absoluteX="8dp">
 
             <TextView
-                android:id="@+id/lunch_cal_sum"
+                android:id="@+id/breakfast_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_marginStart="60dp"
                 android:text="0 cal"
                 android:textColor="#98ff98"
                 android:textSize="18sp"
                 android:textStyle="italic" />
+=======
+                android:textSize="24sp"
+                android:text="Breakfast"
+                android:textColor="#98ff98"
+                android:textStyle="bold" />
+>>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
 
             <Button
-                android:id="@+id/add_lunch"
+                android:id="@+id/add_bf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
-                android:layout_marginStart="30dp"
+                android:layout_alignParentEnd="true"
                 android:text="add" />
+<<<<<<< HEAD
         </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
@@ -176,10 +219,14 @@
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             tools:layout_editor_absoluteY="457dp" />
+=======
+        </RelativeLayout>
+>>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:gravity="end"
             android:orientation="horizontal"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -217,5 +264,20 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
             tools:listitem="@layout/food_item_list"></android.support.v7.widget.RecyclerView>
+=======
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/breakfast_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:clipChildren="false"
+                android:scrollbars="vertical"
+                tools:listitem="@layout/food_item_list">
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+>>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

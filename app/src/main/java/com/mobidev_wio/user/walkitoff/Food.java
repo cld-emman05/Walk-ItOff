@@ -14,8 +14,9 @@ import java.util.ArrayList;
  */
 
 public class Food {
-    private String name;
-    private String description;
+    private final static String TAG = "Food";
+
+    private String name, description;
     private int calories;
 
     public Food(String name, String description, int calories) {
@@ -26,17 +27,29 @@ public class Food {
 
     public String getName()
     {
+<<<<<<< HEAD
         return name;
+=======
+        return this.name;
+>>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
     }
 
     public String getDescription()
     {
+<<<<<<< HEAD
         return description;
+=======
+        return this.description;
+>>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
     }
 
     public int getCalories()
     {
+<<<<<<< HEAD
         return calories;
+=======
+        return this.calories;
+>>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
     }
 
     public String getCaloriesString()
