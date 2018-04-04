@@ -9,7 +9,7 @@
     android:layout_marginEnd="16dp"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/food_spec"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,14 +40,13 @@
             android:id="@+id/food_cal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
+            android:layout_alignParentEnd="true"
             android:text="0 cal"
             android:textColor="#98ff98"
             android:textAlignment="textEnd"
             android:textSize="16sp" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/food_desc_text"

@@ -26,6 +26,7 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 
 public class Dashboard extends AppCompatActivity
+<<<<<<< HEAD
         implements NavigationView.OnNavigationItemSelectedListener, SensorEventListener, StepListener {
 
     TextView date;
@@ -39,11 +40,19 @@ public class Dashboard extends AppCompatActivity
     private int numSteps;
     private int calBurn;
     Calendar cal = new GregorianCalendar(Locale.TAIWAN);
+=======
+        implements NavigationView.OnNavigationItemSelectedListener, SensorEventListener{
+
+    SensorManager sensorManager;
+    TextView tv_steps;
+    boolean running = false;
+>>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+<<<<<<< HEAD
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         accel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -57,15 +66,29 @@ public class Dashboard extends AppCompatActivity
         sensorManager.registerListener(Dashboard.this, accel, SensorManager.SENSOR_DELAY_FASTEST);
         /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);*/
+=======
+>>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        tv_steps = (TextView) findViewById(R.id.step_remaining);
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);*/
+
+        FloatingActionButton addMeal = (FloatingActionButton) findViewById(R.id.add_meal);
+        addMeal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /* Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show(); */
                 Intent add = new Intent(Dashboard.this, MyDiary.class);
                 startActivity(add);
+            }
+        });
+
+        FloatingActionButton about = (FloatingActionButton) findViewById(R.id.about_us);
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
 
@@ -75,6 +98,7 @@ public class Dashboard extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+<<<<<<< HEAD
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         //setUpUI();
@@ -93,21 +117,42 @@ public class Dashboard extends AppCompatActivity
         date = (TextView) this.findViewById(R.id.date);
 
         String period;
+=======
+        /* NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this); */
+        //setUpUI();
+    }
 
-        if(cal.get(Calendar.HOUR) >= 0 && cal.get(Calendar.HOUR) < 6)
-            period = "Midnight Snack";
+>>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
 
-        else if(cal.get(Calendar.HOUR) >= 6 && cal.get(Calendar.HOUR) < 12)
-            period = "Breakfast";
+    protected void onResume()
+    {
+        super.onResume();
+        running = true;
+        Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
 
-        else if(cal.get(Calendar.HOUR) >= 12 && cal.get(Calendar.HOUR) < 18)
-            period = "Lunch";
+        if(countSensor != null)
+        {
+            sensorManager.registerListener(this, countSensor, sensorManager.SENSOR_DELAY_UI);
+        }
+        else{
+            Toast.makeText(this, "Sensor not found!", Toast.LENGTH_SHORT).show();
+        }
+    }
 
-        else
-            period = "Dinner";
-
+<<<<<<< HEAD
         date.setText("Time to record your " + period);
     }*/
+=======
+    protected void onPause()
+    {
+        super.onPause();
+        running = false;
+        //to stop detectting steps
+        //sensorManager.unregister(this);
+    }
+>>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
+
 
     @Override
     public void onBackPressed() {
@@ -168,13 +213,20 @@ public class Dashboard extends AppCompatActivity
 
     @Override
     public void onSensorChanged(SensorEvent event) {
+<<<<<<< HEAD
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             simpleStepDetector.updateAccel(
                     event.timestamp, event.values[0], event.values[1], event.values[2]);
+=======
+        if(running)
+        {
+            tv_steps.setText(String.valueOf(event.values[0]));
+>>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
         }
     }
 
     @Override
+<<<<<<< HEAD
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
@@ -191,3 +243,9 @@ public class Dashboard extends AppCompatActivity
 
                                 }
 }
+=======
+    public void onAccuracyChanged(Sensor sensor, int i) {
+
+    }
+}
+>>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
