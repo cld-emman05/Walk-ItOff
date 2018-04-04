@@ -1,6 +1,11 @@
 package com.mobidev_wio.user.walkitoff;
 
+import android.content.Context;
 import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -14,65 +19,82 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
 public class Dashboard extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, SensorEventListener{
 
-    TextView date;
-    Calendar cal = new GregorianCalendar(Locale.TAIWAN);
+    SensorManager sensorManager;
+    TextView tv_steps;
+    boolean running = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        tv_steps = (TextView) findViewById(R.id.step_remaining);
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);*/
+
+        FloatingActionButton addMeal = (FloatingActionButton) findViewById(R.id.add_meal);
+        addMeal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /* Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show(); */
                 Intent add = new Intent(Dashboard.this, MyDiary.class);
                 startActivity(add);
             }
         });
 
+        FloatingActionButton about = (FloatingActionButton) findViewById(R.id.about_us);
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        setUpUI();
+        /* NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this); */
+        //setUpUI();
     }
 
-    public void setUpUI(){
-        date = (TextView) this.findViewById(R.id.date);
 
-        String period;
+    protected void onResume()
+    {
+        super.onResume();
+        running = true;
+        Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
 
-        if(cal.get(Calendar.HOUR) >= 0 && cal.get(Calendar.HOUR) < 6)
-            period = "Midnight Snack";
-
-        else if(cal.get(Calendar.HOUR) >= 6 && cal.get(Calendar.HOUR) < 12)
-            period = "Breakfast";
-
-        else if(cal.get(Calendar.HOUR) >= 12 && cal.get(Calendar.HOUR) < 18)
-            period = "Lunch";
-
-        else
-            period = "Dinner";
-
-        date.setText("Time to record your " + period);
+        if(countSensor != null)
+        {
+            sensorManager.registerListener(this, countSensor, sensorManager.SENSOR_DELAY_UI);
+        }
+        else{
+            Toast.makeText(this, "Sensor not found!", Toast.LENGTH_SHORT).show();
+        }
     }
+
+    protected void onPause()
+    {
+        super.onPause();
+        running = false;
+        //to stop detectting steps
+        //sensorManager.unregister(this);
+    }
+
 
     @Override
     public void onBackPressed() {
@@ -84,14 +106,14 @@ public class Dashboard extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+     /*@Override
+   public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.dashboard, menu);
         return true;
-    }
+    }*/
 
-    @Override
+    /*@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -104,7 +126,7 @@ public class Dashboard extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -129,5 +151,18 @@ public class Dashboard extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if(running)
+        {
+            tv_steps.setText(String.valueOf(event.values[0]));
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
+
     }
 }

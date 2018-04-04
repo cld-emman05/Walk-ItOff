@@ -24,7 +24,7 @@ public class AddFood extends AppCompatActivity {
 
     public final static String REQUEST_CODE_KEY = "REQUEST_CODE_KEY";
     public final static String FOOD_NAME_KEY = "FOOD_NAME_KEY";
-    public final static String FOOD_DESC_KEY = "FOOD_DESC_Key";
+    public final static String FOOD_DESC_KEY = "FOOD_DESC_KEY";
     public final static String CALORIES_KEY = "CALORIES_KEY";
 
     private EditText nameText;
@@ -82,16 +82,24 @@ public class AddFood extends AppCompatActivity {
         }
 
         //check calories
-        int calories = -1;
+        int calories = -0;
         if(this.caloriesText.getText().toString().length() > 0) {
             calories = Integer.parseInt(AddFood.this.caloriesText.getText().toString());
         }
 
-        if(calories <= 0 || calories > 10000) {
+        if(calories <= 0) {
             //dismiss keyboard so prompt can be seen.
             InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(caloriesText.getWindowToken(), 0);
             this.displayPrompt("Calorie must be greater than 0.");
+            return false;
+        }
+
+        else if(calories >= 10000) {
+            //dismiss keyboard so prompt can be seen.
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(caloriesText.getWindowToken(), 0);
+            this.displayPrompt("Calorie must be less than.");
             return false;
         }
 
@@ -113,7 +121,7 @@ public class AddFood extends AppCompatActivity {
     private void displayPrompt(String message) {
         Snackbar snackbar = Snackbar.make(AddFood.this.findViewById(R.id.add_food_layout), message,3000);
 
-        TextView snackbarActionTextView =  snackbar.getView().findViewById( android.support.design.R.id.snackbar_text );
+        TextView snackbarActionTextView =  snackbar.getView().findViewById( android.support.design.R.id.snackbar_text);
         snackbarActionTextView.setTextSize(20);
         snackbarActionTextView.setTypeface(snackbarActionTextView.getTypeface(), Typeface.BOLD);
 
