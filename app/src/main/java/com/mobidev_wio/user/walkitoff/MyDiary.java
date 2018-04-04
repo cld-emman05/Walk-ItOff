@@ -99,11 +99,18 @@ public class MyDiary extends AppCompatActivity {
 
         int sum = this.bf_cal_sum + this.lunch_cal_sum + this.dinner_cal_sum;
 
+<<<<<<< HEAD
         this.t_cons = (TextView) this.findViewById(R.id.total_cal_sum);
         t_cons.setText(new Integer(sum).toString() + " cal");
 =======
+<<<<<<< HEAD
         } */
 >>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
+=======
+        this.t_cons = (TextView) this.findViewById(R.id.dinner_cal_sum);
+        t_cons.setText(new Integer(sum).toString());
+>>>>>>> parent of c0321ad... Too many to mention
+>>>>>>> ef8a1d50e7dd51a42c85c89c1289fd0a97ce6e3a
     }
 
     private void setUpButtons() {
@@ -157,8 +164,7 @@ public class MyDiary extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == AddFood.ADD_ACTIVITY_CODE) {
-            if (resultCode == AddFood.ADD_SUCCESS)
-            {
+            if (resultCode == AddFood.ADD_SUCCESS) {
                 //for demonstration purposes, result code is used to check if adding is successful. In this scenario,
                 //there is no chance for the add activity to fail.
                 String name = data.getStringExtra(AddFood.FOOD_NAME_KEY);
@@ -169,6 +175,7 @@ public class MyDiary extends AppCompatActivity {
 
 
                 Food model = new Food(name, desc, cal);
+<<<<<<< HEAD
                 //for breakfast
                 this.bf_collection.add(model);
 
@@ -189,15 +196,23 @@ public class MyDiary extends AppCompatActivity {
 
 >>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
                 //for dinner
+=======
+>>>>>>> parent of c0321ad... Too many to mention
                 this.dinner_collection.add(model);
 
                 //refresh the adapter
 <<<<<<< HEAD
                 this.dAdapter.notifyDataSetChanged();
+<<<<<<< HEAD
 =======
                 this.dAdapter.notifyDataSetChanged(); */
 >>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
+=======
+<<<<<<< HEAD
+>>>>>>> ef8a1d50e7dd51a42c85c89c1289fd0a97ce6e3a
 
+=======
+>>>>>>> parent of c0321ad... Too many to mention
             }
         }
     }

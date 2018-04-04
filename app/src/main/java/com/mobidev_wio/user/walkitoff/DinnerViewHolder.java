@@ -23,24 +23,19 @@ public class DinnerViewHolder extends RecyclerView.ViewHolder{
         this.calorieText = itemView.findViewById(R.id.food_cal);
     }
 
-    public TextView getNameText()
-    {
+    public TextView getNameText() {
         return nameText;
     }
 
-    public TextView getDescriptionText()
-    {
+    public TextView getDescriptionText() {
         return descriptionText;
     }
 
-    public TextView getCalorieText()
-    {
+    public TextView getCalorieText() {
         return calorieText;
-
     }
 
-    public void setModelIndex(int modelIndex)
-    {
+    public void setModelIndex(int modelIndex) {
         this.modelIndex = modelIndex;
     }
 }

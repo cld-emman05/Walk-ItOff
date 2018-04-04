@@ -13,28 +13,45 @@
     <LinearLayout
         android:id="@+id/dashboard"
         android:layout_width="match_parent"
-        android:layout_height="119dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:layout_width="150sp"
-            android:layout_height="match_parent"
-            android:foreground="@mipmap/ic_launcher" />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Welcome to Walk-It-Off!"
+            android:textAlignment="center"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:layout_width="250sp"
-            android:layout_height="400sp"
-            android:foreground="@mipmap/ic_title_foreground" />
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date today"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            app:layout_constraintLeft_toLeftOf="parent"
+            tools:layout_editor_absoluteY="81dp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -59,7 +76,6 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:text="Calories Remaining"
-            android:textColor="#98ff98"
             android:textSize="20sp"
             android:textStyle="italic"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -72,8 +88,15 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:text="0"
+<<<<<<< HEAD
             android:textColor="#98ff98"
+<<<<<<< HEAD
             android:textSize="36sp"
+=======
+=======
+>>>>>>> parent of c0321ad... Too many to mention
+            android:textSize="48sp"
+>>>>>>> ef8a1d50e7dd51a42c85c89c1289fd0a97ce6e3a
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             tools:layout_editor_absoluteY="81dp" />
@@ -101,7 +124,6 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:text="Calories Burned"
-            android:textColor="#98ff98"
             android:textSize="20sp"
             android:textStyle="italic"
             app:layout_constraintRight_toRightOf="parent"
@@ -114,8 +136,15 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:text="0"
+<<<<<<< HEAD
             android:textColor="#98ff98"
+<<<<<<< HEAD
             android:textSize="36sp"
+=======
+=======
+>>>>>>> parent of c0321ad... Too many to mention
+            android:textSize="48sp"
+>>>>>>> ef8a1d50e7dd51a42c85c89c1289fd0a97ce6e3a
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             tools:layout_editor_absoluteY="81dp" />
@@ -144,7 +173,6 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:text="Steps Remaining"
-            android:textColor="#98ff98"
             android:textSize="20sp"
             android:textStyle="italic"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -157,8 +185,15 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:text="0"
+<<<<<<< HEAD
             android:textColor="#98ff98"
+<<<<<<< HEAD
             android:textSize="36sp"
+=======
+=======
+>>>>>>> parent of c0321ad... Too many to mention
+            android:textSize="48sp"
+>>>>>>> ef8a1d50e7dd51a42c85c89c1289fd0a97ce6e3a
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             tools:layout_editor_absoluteY="81dp" />

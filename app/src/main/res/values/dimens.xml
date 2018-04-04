@@ -4,5 +4,13 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
+<<<<<<< HEAD
     <dimen name="fab_margin">24dp</dimen>
+=======
+<<<<<<< HEAD
+    <dimen name="fab_margin">32dp</dimen>
+=======
+    <dimen name="fab_margin">16dp</dimen>
+>>>>>>> parent of c0321ad... Too many to mention
+>>>>>>> ef8a1d50e7dd51a42c85c89c1289fd0a97ce6e3a
 </resources>

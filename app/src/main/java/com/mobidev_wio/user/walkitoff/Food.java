@@ -25,6 +25,7 @@ public class Food {
         this.calories = calories;
     }
 
+<<<<<<< HEAD
     public String getName()
     {
 <<<<<<< HEAD
@@ -46,14 +47,27 @@ public class Food {
     public int getCalories()
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getCalories() {
+>>>>>>> parent of c0321ad... Too many to mention
+>>>>>>> ef8a1d50e7dd51a42c85c89c1289fd0a97ce6e3a
         return calories;
 =======
         return this.calories;
 >>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
     }
 
-    public String getCaloriesString()
-    {
+    public String getCaloriesString() {
         return Integer.toString(this.calories);
     }
 }

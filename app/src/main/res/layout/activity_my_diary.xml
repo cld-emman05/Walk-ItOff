@@ -4,27 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/ic_launcher_background"
     android:orientation="vertical"
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
     tools:context="com.mobidev_wio.user.walkitoff.MyDiary"
-    tools:layout_editor_absoluteX="16dp"
-    tools:layout_editor_absoluteY="81dp">
+    tools:layout_editor_absoluteX="16dp">
 
 <<<<<<< HEAD
     <LinearLayout
+<<<<<<< HEAD
         android:id="@+id/total_cal"
 =======
+<<<<<<< HEAD
     <RelativeLayout
         android:id="@+id/bf_cal"
 >>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
+=======
+        android:id="@+id/breakfast"
+>>>>>>> parent of c0321ad... Too many to mention
+>>>>>>> ef8a1d50e7dd51a42c85c89c1289fd0a97ce6e3a
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
 <<<<<<< HEAD
         android:layout_marginTop="16dp"
         android:orientation="horizontal"
+=======
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+>>>>>>> parent of c0321ad... Too many to mention
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -57,10 +65,54 @@
 
     <LinearLayout
         android:id="@+id/breakfast"
+=======
+            android:text="Breakfast"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/bf_cal_sum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:text="0 cal"
+                android:textSize="18sp"
+                android:textStyle="italic" />
+
+            <Button
+                android:id="@+id/add_bf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                android:text="add" />
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/breakfast_list"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:clipChildren="false"
+            android:scrollbars="vertical"
+            tools:listitem="@layout/food_item_list">
+
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lunch"
+>>>>>>> parent of c0321ad... Too many to mention
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:orientation="vertical"
+<<<<<<< HEAD
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -82,30 +134,69 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
+<<<<<<< HEAD
         <TextView
             android:id="@+id/bf_cal_sum"
             android:layout_width="wrap_content"
+=======
+=======
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/breakfast">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/lunch_list"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:clipChildren="false"
+            android:scrollbars="vertical"
+            tools:listitem="@layout/food_item_list">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lunch"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+>>>>>>> parent of c0321ad... Too many to mention
+        <LinearLayout
+            android:layout_width="match_parent"
+>>>>>>> ef8a1d50e7dd51a42c85c89c1289fd0a97ce6e3a
             android:layout_height="wrap_content"
 <<<<<<< HEAD
             android:gravity="end"
             android:orientation="horizontal">
 
             <TextView
+<<<<<<< HEAD
                 android:id="@+id/bf_cal_sum"
+=======
+                android:id="@+id/lunch_cal_sum"
+>>>>>>> parent of c0321ad... Too many to mention
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="60dp"
                 android:text="0 cal"
+<<<<<<< HEAD
                 android:textColor="#98ff98"
+=======
+>>>>>>> parent of c0321ad... Too many to mention
                 android:textSize="18sp"
                 android:textStyle="italic" />
 
             <Button
-                android:id="@+id/add_bf"
+                android:id="@+id/add_lunch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="30dp"
                 android:layout_marginStart="30dp"
+<<<<<<< HEAD
                 android:text="add" />
         </LinearLayout>
 
@@ -196,22 +287,44 @@
 
         </android.support.v7.widget.RecyclerView>
 
+=======
+                android:text="add" />
+        </LinearLayout>
+
+>>>>>>> parent of c0321ad... Too many to mention
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/dinner"
         android:layout_width="match_parent"
+<<<<<<< HEAD
         android:layout_height="155dp"
         android:orientation="vertical"
+=======
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+>>>>>>> parent of c0321ad... Too many to mention
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+<<<<<<< HEAD
         app:layout_constraintTop_toBottomOf="@+id/lunch">
+=======
+        app:layout_constraintTop_toBottomOf="@+id/lunch"
+        app:layout_constraintVertical_bias="0.0">
+>>>>>>> parent of c0321ad... Too many to mention
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:layout_marginLeft="16dp"
             android:text="Dinner"
             android:textColor="#98ff98"
@@ -220,18 +333,29 @@
             app:layout_constraintLeft_toLeftOf="parent"
             tools:layout_editor_absoluteY="457dp" />
 =======
+<<<<<<< HEAD
         </RelativeLayout>
 >>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
+=======
+            android:text="Dinner"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+>>>>>>> parent of c0321ad... Too many to mention
+>>>>>>> ef8a1d50e7dd51a42c85c89c1289fd0a97ce6e3a
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 <<<<<<< HEAD
             android:gravity="end"
+<<<<<<< HEAD
             android:orientation="horizontal"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             tools:layout_editor_absoluteY="489dp">
+=======
+            android:orientation="horizontal">
+>>>>>>> parent of c0321ad... Too many to mention
 
             <TextView
                 android:id="@+id/dinner_cal_sum"
@@ -239,7 +363,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="60dp"
                 android:text="0 cal"
+<<<<<<< HEAD
                 android:textColor="#98ff98"
+=======
+>>>>>>> parent of c0321ad... Too many to mention
                 android:textSize="18sp"
                 android:textStyle="italic" />
 
@@ -256,6 +383,7 @@
             android:id="@+id/dinner_list"
             android:layout_width="match_parent"
             android:layout_height="75dp"
+<<<<<<< HEAD
             android:layout_marginTop="4dp"
             android:clipChildren="false"
             android:scrollbars="vertical"
@@ -265,6 +393,7 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
             tools:listitem="@layout/food_item_list"></android.support.v7.widget.RecyclerView>
 =======
+<<<<<<< HEAD
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp">
 
@@ -279,5 +408,46 @@
             </android.support.v7.widget.RecyclerView>
         </LinearLayout>
 >>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
+=======
+            android:clipChildren="false"
+            android:scrollbars="vertical"
+            tools:listitem="@layout/food_item_list"></android.support.v7.widget.RecyclerView>
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="33dp"
+        android:layout_marginBottom="28dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:gravity="start
+"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total calorie consumption"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/dinner_cal_sum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:text="0 cal"
+            android:textSize="18sp"
+            android:textStyle="italic" />
+>>>>>>> parent of c0321ad... Too many to mention
+>>>>>>> ef8a1d50e7dd51a42c85c89c1289fd0a97ce6e3a
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

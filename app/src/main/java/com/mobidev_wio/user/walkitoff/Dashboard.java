@@ -19,7 +19,14 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
+<<<<<<< HEAD
 public class Dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, SensorEventListener{
+=======
+public class Dashboard extends AppCompatActivity
+<<<<<<< HEAD
+<<<<<<< HEAD
+        implements NavigationView.OnNavigationItemSelectedListener, SensorEventListener, StepListener {
+>>>>>>> ef8a1d50e7dd51a42c85c89c1289fd0a97ce6e3a
 
     TextView date;
     private TextView TvSteps;
@@ -35,13 +42,28 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
     SensorManager sensorManager;
     TextView tv_steps;
     boolean running = false;
+<<<<<<< HEAD
 
     TextView date;
+=======
+>>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
+=======
+        implements NavigationView.OnNavigationItemSelectedListener {
+
+    TextView date;
+    Calendar cal = new GregorianCalendar(Locale.TAIWAN);
+>>>>>>> parent of c0321ad... Too many to mention
+>>>>>>> ef8a1d50e7dd51a42c85c89c1289fd0a97ce6e3a
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> ef8a1d50e7dd51a42c85c89c1289fd0a97ce6e3a
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         accel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -55,6 +77,15 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         sensorManager.registerListener(Dashboard.this, accel, SensorManager.SENSOR_DELAY_FASTEST);
         /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);*/
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
+=======
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+>>>>>>> parent of c0321ad... Too many to mention
+>>>>>>> ef8a1d50e7dd51a42c85c89c1289fd0a97ce6e3a
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +104,11 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> ef8a1d50e7dd51a42c85c89c1289fd0a97ce6e3a
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         //setUpUI();
@@ -87,7 +123,41 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
     protected void onPause() {
         super.onPause();
     }
+<<<<<<< HEAD
 
+=======
+    /*public void setUpUI(){
+        date = (TextView) this.findViewById(R.id.date);
+
+        String period;
+=======
+        /* NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this); */
+        //setUpUI();
+    }
+
+>>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
+=======
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        setUpUI();
+    }
+
+    public void setUpUI(){
+        date = (TextView) this.findViewById(R.id.date);
+>>>>>>> parent of c0321ad... Too many to mention
+
+        String period;
+
+        if(cal.get(Calendar.HOUR) >= 0 && cal.get(Calendar.HOUR) < 6)
+            period = "Midnight Snack";
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+        date.setText("Time to record your " + period);
+    }*/
+=======
+>>>>>>> ef8a1d50e7dd51a42c85c89c1289fd0a97ce6e3a
     protected void onPause()
     {
         super.onPause();
@@ -95,6 +165,23 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         //to stop detectting steps
         //sensorManager.unregister(this);
     }
+<<<<<<< HEAD
+=======
+>>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
+=======
+        else if(cal.get(Calendar.HOUR) >= 6 && cal.get(Calendar.HOUR) < 12)
+            period = "Breakfast";
+>>>>>>> parent of c0321ad... Too many to mention
+
+        else if(cal.get(Calendar.HOUR) >= 12 && cal.get(Calendar.HOUR) < 18)
+            period = "Lunch";
+
+        else
+            period = "Dinner";
+
+        date.setText("Time to record your " + period);
+    }
+>>>>>>> ef8a1d50e7dd51a42c85c89c1289fd0a97ce6e3a
 
     @Override
     public void onBackPressed() {
@@ -106,12 +193,16 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         }
     }
 
+<<<<<<< HEAD
     /*@Override
+=======
+    @Override
+>>>>>>> ef8a1d50e7dd51a42c85c89c1289fd0a97ce6e3a
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.dashboard, menu);
         return true;
-    }*/
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -152,6 +243,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+<<<<<<< HEAD
 
     @Override
     public void onSensorChanged(SensorEvent event) {
@@ -180,4 +272,11 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
     public void onAccuracyChanged(Sensor sensor, int i) {
 
     }
+<<<<<<< HEAD
 }
+=======
+=======
+>>>>>>> parent of c0321ad... Too many to mention
+}
+>>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
+>>>>>>> ef8a1d50e7dd51a42c85c89c1289fd0a97ce6e3a
