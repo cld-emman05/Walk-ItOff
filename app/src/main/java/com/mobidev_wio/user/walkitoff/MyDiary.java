@@ -94,23 +94,13 @@ public class MyDiary extends AppCompatActivity {
         for (int i = 0; i < this.dinner_collection.size(); i++) {
             this.dinner_cal_sum += this.dinner_collection.get(i).getCalories();
             this.dinner_cal.setText(new Integer(this.dinner_cal_sum).toString() + " cal");
-<<<<<<< HEAD
         }
 
         int sum = this.bf_cal_sum + this.lunch_cal_sum + this.dinner_cal_sum;
 
-<<<<<<< HEAD
         this.t_cons = (TextView) this.findViewById(R.id.total_cal_sum);
         t_cons.setText(new Integer(sum).toString() + " cal");
-=======
-<<<<<<< HEAD
         } */
->>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
-=======
-        this.t_cons = (TextView) this.findViewById(R.id.dinner_cal_sum);
-        t_cons.setText(new Integer(sum).toString());
->>>>>>> parent of c0321ad... Too many to mention
->>>>>>> ef8a1d50e7dd51a42c85c89c1289fd0a97ce6e3a
     }
 
     private void setUpButtons() {
@@ -145,21 +135,7 @@ public class MyDiary extends AppCompatActivity {
             }
         }); */
     }
-    private void onClick(View v)
-    {
-        if(v == bf_btn)
-        {
 
-        }
-        else if(v == lunch_btn)
-        {
-
-        }
-        else if(v == dinner_btn)
-        {
-
-        }
-    }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -171,48 +147,12 @@ public class MyDiary extends AppCompatActivity {
                 String desc = data.getStringExtra(AddFood.FOOD_DESC_KEY);
                 int cal = data.getIntExtra(AddFood.CALORIES_KEY, 0);
 
-
-
-
                 Food model = new Food(name, desc, cal);
-<<<<<<< HEAD
                 //for breakfast
                 this.bf_collection.add(model);
 
                 //refresh the adapter
                 this.bfAdapter.notifyDataSetChanged();
-
-<<<<<<< HEAD
-                //for lunch
-=======
-                /*for lunch
->>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
-                this.lunch_collection.add(model);
-
-                //refresh the adapter
-                this.lAdapter.notifyDataSetChanged();
-<<<<<<< HEAD
-=======
-
->>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
-                //for dinner
-=======
->>>>>>> parent of c0321ad... Too many to mention
-                this.dinner_collection.add(model);
-
-                //refresh the adapter
-<<<<<<< HEAD
-                this.dAdapter.notifyDataSetChanged();
-<<<<<<< HEAD
-=======
-                this.dAdapter.notifyDataSetChanged(); */
->>>>>>> c0321ad557c04213966e7d697a6d6dcd87af1ede
-=======
-<<<<<<< HEAD
->>>>>>> ef8a1d50e7dd51a42c85c89c1289fd0a97ce6e3a
-
-=======
->>>>>>> parent of c0321ad... Too many to mention
             }
         }
     }
